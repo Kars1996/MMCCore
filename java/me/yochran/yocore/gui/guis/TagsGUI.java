@@ -1,6 +1,7 @@
 package me.yochran.yocore.gui.guis;
 
 import me.yochran.yocore.gui.*;
+import me.yochran.yocore.tags.Tag;
 import me.yochran.yocore.utils.ItemBuilder;
 import me.yochran.yocore.utils.Utils;
 import me.yochran.yocore.yoCore;
@@ -33,22 +34,22 @@ public class TagsGUI extends CustomGUI implements PagedGUI {
         Map<Integer, Button> buttons = new HashMap<>();
         Set<Integer> pages = new HashSet<>();
 
-        for (String tag : plugin.getConfig().getConfigurationSection("Tags").getKeys(false)) {
+        for (Map.Entry<String, Tag> tag : Tag.getTags().entrySet()) {
             loop++;
             ItemBuilder itemBuilder = new ItemBuilder(
                     Utils.getMaterialFromConfig(plugin.getConfig().getString("TagsCommand.TagItem")),
                     1,
-                    plugin.getConfig().getString("Tags." + tag + ".Display"),
+                    tag.getValue().getDisplay(),
                     ItemBuilder.formatLore(new String[] {
                             "&3&m-----------------------",
-                            "&bTag: &3" + plugin.getConfig().getString("Tags." + tag + ".ID"),
-                            "&bPrefix: &3" + plugin.getConfig().getString("Tags." + tag + ".Prefix"),
-                            "&bDisplay: &3" + plugin.getConfig().getString("Tags." + tag + ".Display"),
+                            "&bTag: &3" + tag.getValue().getID(),
+                            "&bPrefix: &3" + tag.getValue().getPrefix(),
+                            "&bDisplay: &3" + tag.getValue().getDisplay(),
                             "&3&m-----------------------"
                     })
             );
 
-            if (player.hasPermission(plugin.getConfig().getString("Tags." + tag + ".Permission")))
+            if (player.hasPermission(tag.getValue().getPermission()))
                 itemBuilder.getLore().add(Utils.translate("&aClick to select this tag."));
             else itemBuilder.getLore().add(Utils.translate("&cYou cannot use this tag."));
 
@@ -58,10 +59,10 @@ public class TagsGUI extends CustomGUI implements PagedGUI {
                         GUI.close(gui);
 
                         if (itemBuilder.getLore().contains(Utils.translate("&aClick to select this tag."))) {
-                            plugin.tag.put(gui.getPlayer().getUniqueId(), plugin.getConfig().getString("Tags." + tag + ".ID"));
+                            plugin.tag.put(gui.getPlayer().getUniqueId(), tag.getValue());
 
                             gui.getPlayer().sendMessage(Utils.translate(plugin.getConfig().getString("TagsCommand.FormatOn")
-                                    .replace("%tag%", plugin.getConfig().getString("Tags." + tag + ".Display"))));
+                                    .replace("%tag%", tag.getValue().getDisplay())));
                         }
                     },
                     itemBuilder.getName(),
