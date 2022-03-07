@@ -1,6 +1,7 @@
 package me.yochran.yocore.management;
 
 import me.yochran.yocore.player.yoPlayer;
+import me.yochran.yocore.ranks.Rank;
 import me.yochran.yocore.server.Server;
 import me.yochran.yocore.yoCore;
 import org.bukkit.Bukkit;
@@ -10,6 +11,7 @@ import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class PlayerManagement {
 
@@ -22,6 +24,10 @@ public class PlayerManagement {
     public void setupPlayer(Player player) {
         plugin.playerData.config.set(player.getUniqueId().toString() + ".Name", player.getName());
         plugin.playerData.config.set(player.getUniqueId().toString() + ".Rank", "DEFAULT");
+        for (Map.Entry<String, Rank> ranks : Rank.getRanks().entrySet()) {
+            if (ranks.getValue().isDefault())
+                plugin.playerData.config.set(player.getUniqueId().toString() + ".Rank", ranks.getValue().getID());
+        }
         plugin.playerData.config.set(player.getUniqueId().toString() + ".IP", player.getAddress().getAddress().getHostAddress());
         plugin.playerData.config.set(player.getUniqueId().toString() + ".ReportsAmount", 0);
         plugin.playerData.config.set(player.getUniqueId().toString() + ".FirstJoined", System.currentTimeMillis());
