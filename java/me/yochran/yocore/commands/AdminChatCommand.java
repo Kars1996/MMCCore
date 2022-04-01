@@ -40,7 +40,7 @@ public class AdminChatCommand implements CommandExecutor {
                 sender.sendMessage(Utils.translate(plugin.getConfig().getString("AdminChat.ToggleOff")));
             } else {
                 plugin.achat_toggle.add(((Player) sender).getUniqueId());
-                sender.sendMessage(Utils.translate(plugin.getConfig().getString("Adminhat.ToggleOn")));
+                sender.sendMessage(Utils.translate(plugin.getConfig().getString("AdminChat.ToggleOn")));
             }
 
             return true;
