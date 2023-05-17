@@ -1,9 +1,9 @@
-name: yoCore
+name: ClubCore
 version: ${project.version}
 main: me.yochran.yocore.yoCore
 api-version: 1.16
-authors: [ Yochran ]
-description: Remastered version of the vCores, combined into one plugin.
+authors: [ Yochran, Kars1996 ]
+description: Forked Version of YoCore with added features to look like MMC's Core.
 loadbefore:
   - yoBungee
 permissions:
@@ -250,7 +250,7 @@ commands:
     aliases: ss
   Modmode:
     description: Put you or another player into modmode.
-    aliases: mod
+    aliases: [mod, h]
   Report:
     description: Report a player for breaking the rules.
   BuildMode:
