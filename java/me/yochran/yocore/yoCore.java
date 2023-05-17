@@ -494,6 +494,6 @@ public final class yoCore extends JavaPlugin {
         getCommand("BuildChat").setExecutor(new BuilderChatCommand());
         getCommand("Message").setExecutor(new MessageCommand());
         getCommand("Reply").setExecutor(new ReplyCommand());
-        getCommand("Yoreload").setExecutor(new ReloadCommand());
+        getCommand("CoreReload").setExecutor(new ReloadCommand());
     }
 }
