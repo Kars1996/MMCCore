@@ -1,5 +1,5 @@
-# yoCore
-Better and revised version of [vCores](https://github.com/Yochran/vCores), with superior coding, bug patches, and all combined into 1 single plugin.
+# MMCCore
+Will be working on this properly soon
 
 ### Languages:
   - Java [(Paper API)](https://papermc.io)
