@@ -58,7 +58,7 @@ public final class yoCore extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-        Bukkit.getConsoleSender().sendMessage("yoCore v1.0 by Yochran is loading...");
+        Bukkit.getConsoleSender().sendMessage("ClubCore is loading.");
 
         instance = this;
 
@@ -88,7 +88,7 @@ public final class yoCore extends JavaPlugin {
                 registerServers();
                 registerLastLocations();
 
-                Bukkit.getConsoleSender().sendMessage("yoCore v1.0 by Yochran has successfully loaded.");
+                Bukkit.getConsoleSender().sendMessage("ClubCore by Kars1996 and YoChran has loaded.");
             }
         }.runTaskLater(this, 20 * 5);
 
